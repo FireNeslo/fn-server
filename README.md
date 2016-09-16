@@ -12,7 +12,7 @@ $ npm install fn-server --save
 ## Usage
 ```js
 const express = require('express')
-const server = require('fn-server');
+const server = require('fn-server')
 
 /* defaults */
 const config = {
