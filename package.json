@@ -1,7 +1,7 @@
 {
   "name": "fn-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "A helper for getting a skeleton app up and running by using conventions.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
