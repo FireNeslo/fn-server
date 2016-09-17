@@ -52,7 +52,7 @@ module.exports = function (req, res, next) {
 }
 ```
 
-## views
+## Views
 By default we assume you have configure pug as your default rendering engine.
 You are of course free to override this [See API](#API).
 
