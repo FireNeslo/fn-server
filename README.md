@@ -59,7 +59,7 @@ server
 +-- config
 |   +-- defaults.json # shared config
 |   +-- development.json # env config
-+-- resource
++-- resource // define route /resource
 |   +-- resource.model.js
 |   +-- action.controller.js // action in [index show update create destroy]
 |   +-- custom.controller.js // some post action on instance.
