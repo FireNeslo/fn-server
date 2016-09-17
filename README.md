@@ -39,6 +39,31 @@ server
 |   |   +--action.controller.js // some custom collection action.
 ```
 
+## Controllers
+A controller is just an connect style middleware.
+With the small extra feature of allowing you to return a body value.
+The value can be either just an object or a promise.
+```
+// server/greeting/show.controller.js
+// get /greeting/world RESPONSE { hello: "world" }
+
+module.exports = function (req, res, next) {
+  return { hello: req.params.id }
+}
+```
+
+## views
+By default we assume you have configure pug as your default rendering engine.
+You are of course free to override this [See API](#API).
+
+The views follow the same naming scheme as controllers.
+
+```
+// server/greeting/show.view.pug
+// get /greeting/world RESPONSE <h1>hello world</h1>
+h1 hello ${body.hello}
+```
+
 ##API
 
 ## server(router, config)
