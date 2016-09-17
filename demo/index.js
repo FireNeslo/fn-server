@@ -1,10 +1,9 @@
 import express from 'express'
-import Server from '..'
+import server from '..'
 
 const app = express()
 
-module.exports = Server(app, { cwd: __dirname })
+module.exports = server(app, { cwd: __dirname })
   .then(context => {
-    global.app = context
-    return app
+    return (global.app = context).router
   })

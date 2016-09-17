@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "chokidar": "^1.6.0",
-    "glob": "^7.0.6"
+    "glob": "^7.0.6",
+    "nconf": "^0.8.4"
   }
 }

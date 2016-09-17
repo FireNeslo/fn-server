@@ -1,6 +1,6 @@
 import path from 'path'
-import CONFIG from './lib/config'
 import register from './lib/register'
+import {CONFIG} from './lib/config'
 import {glob, asMap, map} from './lib/utils'
 function extractName(expression, file) {
   return new RegExp(expression.replace(/\*[/*]*/g, '(.*)')).exec(file).pop()
