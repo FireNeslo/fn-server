@@ -61,7 +61,7 @@ The views follow the same naming scheme as controllers.
 ```jade
 // server/greeting/show.view.pug
 // get /greeting/world RESPONSE <h1>hello world</h1>
-h1 hello ${body.hello}
+h1 hello #{body.hello}
 ```
 
 ##API
