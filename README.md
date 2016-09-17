@@ -43,7 +43,7 @@ server
 A controller is just an connect style middleware.
 With the small extra feature of allowing you to return a body value.
 The value can be either just an object or a promise.
-```
+```js
 // server/greeting/show.controller.js
 // get /greeting/world RESPONSE { hello: "world" }
 
@@ -58,7 +58,7 @@ You are of course free to override this [See API](#API).
 
 The views follow the same naming scheme as controllers.
 
-```
+```jade
 // server/greeting/show.view.pug
 // get /greeting/world RESPONSE <h1>hello world</h1>
 h1 hello ${body.hello}
