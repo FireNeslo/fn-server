@@ -41,7 +41,7 @@ server
 
 ##API
 
-## server(router, options)
+## server(router, config)
 
 Author: fireneslo@gmail.com
 
@@ -49,11 +49,11 @@ Author: fireneslo@gmail.com
 
 * **function** *router* - Express style router
 
-* **object** *options* - Configure loading and rendering
+* **object** *config* - Configure loading and rendering
 
 ```js
 /* defaults */
-export const CONFIG = {
+export const config = {
   cwd: process.cwd(),
   env: process.env.NODE_ENV || 'development',
   format: 'application/json',
