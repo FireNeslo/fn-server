@@ -7,7 +7,7 @@ Check demo/index.js for usage
 ## Install
 ### npm
 ```bash
-$ npm install fn-server --save
+$ npm install FireNeslo/fn-server --save
 ```
 ## Usage
 ```js
