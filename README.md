@@ -13,39 +13,10 @@ $ npm install fn-server --save
 ```js
 const express = require('express')
 const server = require('fn-server')
-const nconf = require('nconf')
-const path = require('path')
-
-/* defaults */
-export const CONFIG = {
-  cwd: process.cwd(),
-  env: process.env.NODE_ENV || 'development',
-  format: 'application/json',
-  views: './server/**/*.view.pug',
-  models: './server/**/*.model.js',
-  controllers: './server/**/*.controller.js',
-  config: path.join('server', 'config'),
-  configuration() {
-    return nconf.argv().env()
-      .file('default', path.join(this.cwd, this.config, 'index.json'))
-      .file('default', path.join(this.cwd, this.config, 'config.json'))
-      .file('default', path.join(this.cwd, this.config, 'defaults.json'))
-      .file('env', path.join(this.cwd, this.config, this.env + '.json'))
-  },
-  render: {
-    ['application/json'](req, res, next) {
-      res.json(req.body)
-    },
-    ['text/html'](req, res, next) {
-      res.render(req.template, req)
-    }
-  }
-}
-
 
 const app = express()
 
-server(app, config).then(context => {
+server(app).then(context => {
   app.listen(8080)
 })
 
@@ -79,3 +50,31 @@ Author: fireneslo@gmail.com
 * **function** *router* - Express style router
 
 * **object** *options* - Configure loading and rendering
+
+```js
+/* defaults */
+export const CONFIG = {
+  cwd: process.cwd(),
+  env: process.env.NODE_ENV || 'development',
+  format: 'application/json',
+  views: './server/**/*.view.pug',
+  models: './server/**/*.model.js',
+  controllers: './server/**/*.controller.js',
+  config: path.join('server', 'config'),
+  configuration() {
+    return nconf.argv().env()
+      .file('default', path.join(this.cwd, this.config, 'index.json'))
+      .file('default', path.join(this.cwd, this.config, 'config.json'))
+      .file('default', path.join(this.cwd, this.config, 'defaults.json'))
+      .file('env', path.join(this.cwd, this.config, this.env + '.json'))
+  },
+  render: {
+    ['application/json'](req, res, next) {
+      res.json(req.body)
+    },
+    ['text/html'](req, res, next) {
+      res.render(req.template, req)
+    }
+  }
+}
+```
