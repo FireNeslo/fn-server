@@ -13,14 +13,25 @@ $ npm install fn-server --save
 ```js
 const express = require('express')
 const server = require('fn-server')
+const nconf = require('nconf')
+const path = require('path')
 
 /* defaults */
-const config = {
+export const CONFIG = {
   cwd: process.cwd(),
+  env: process.env.NODE_ENV || 'development',
   format: 'application/json',
-  views: './resource/**/*.view.pug',
-  models: './resource/**/*.model.js',
-  controllers: './resource/**/*.controller.js',
+  views: './server/**/*.view.pug',
+  models: './server/**/*.model.js',
+  controllers: './server/**/*.controller.js',
+  config: path.join('server', 'config'),
+  configuration() {
+    return nconf.argv().env()
+      .file('default', path.join(this.cwd, this.config, 'index.json'))
+      .file('default', path.join(this.cwd, this.config, 'config.json'))
+      .file('default', path.join(this.cwd, this.config, 'defaults.json'))
+      .file('env', path.join(this.cwd, this.config, this.env + '.json'))
+  },
   render: {
     ['application/json'](req, res, next) {
       res.json(req.body)
@@ -31,12 +42,30 @@ const config = {
   }
 }
 
+
 const app = express()
 
 server(app, config).then(context => {
   app.listen(8080)
 })
 
+```
+
+## Directory structure
+By default the system assumes the following folder structure.
+
+```
+server
++-- config
+|   +-- defaults.json # shared config
+|   +-- development.json # env config
++-- resource
+|   +-- resource.model.js
+|   +-- action.controller.js // action in [index show update create destroy]
+|   +-- custom.controller.js // some post action on instance.
+|   +-- action.view.pug // jade template to use for rendering.
+|   +-- custom
+|   |   +--action.controller.js // some custom collection action.
 ```
 
 ##API
